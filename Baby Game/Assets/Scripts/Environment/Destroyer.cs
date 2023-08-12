@@ -33,9 +33,7 @@ public class Destroyer : MonoBehaviour
         }
         else
         {
-            stat.ShowStat();
-            money.SaveProgress();
-            money.LoadProgress();
+            gameOver.GameIsOver();
         }
 
     }

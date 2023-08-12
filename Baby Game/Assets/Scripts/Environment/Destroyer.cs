@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-
+    public Statistics stat;
+    public Money money;
 
     private void OnCollisionEnter(Collision other)
     {
@@ -14,9 +15,12 @@ public class Destroyer : MonoBehaviour
             Rigidbody point = other.rigidbody;
             Destroy(point.gameObject);
         }
-        else
+        else if(other.collider.CompareTag("Player"))
         {
-            return;
+            stat.ShowStat();
+            money.SaveProgress(); 
+            money.LoadProgress(); 
+            
         }
         
     }
@@ -32,7 +36,9 @@ public class Destroyer : MonoBehaviour
         }
         else
         {
-            return;
+            stat.ShowStat();
+            money.SaveProgress();
+            money.LoadProgress();
         }
 
     }

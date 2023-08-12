@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    public MenuManager menu;
+    
 
     [SerializeField]
     private GameObject gameOverBox;

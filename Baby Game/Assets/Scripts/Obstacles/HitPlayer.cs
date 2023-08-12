@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class HitPlayer : MonoBehaviour
 {
-    
-    
 
+
+    public GameOver gameOver;
     
 
     private void OnCollisionEnter(Collision other)
@@ -16,7 +16,7 @@ public class HitPlayer : MonoBehaviour
         {
             other.body.GetComponent<Rigidbody>().AddForce(Vector3.right*10, ForceMode.Impulse);
             other.body.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            FindObjectOfType<MenuManager>().GameIsOver();
+            gameOver.GameIsOver();
         }
        
     }

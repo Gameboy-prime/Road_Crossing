@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
+
+    [SerializeField]
+    private GameObject player;
+    public Statistics stat;
+    public Money money;
+
+
+
     
-
-    [SerializeField]
-    private GameObject gameOverBox;
-    [SerializeField]
-    private GameObject mainCanvasBox;
-
-
-    IEnumerator GameOverCoroutine()
-    {
-        yield return new WaitForSeconds(.3f);
-        gameOverBox.SetActive(true);
-        mainCanvasBox.SetActive(false);
-        Time.timeScale = 0f;
-    }
 
     public void GameIsOver()
     {
-        StartCoroutine(GameOverCoroutine());
+        player.GetComponent<Movement>().enabled= false;
+        stat.ShowStat();
+        money.LoadProgress();
+        money.SaveProgress();
     }
 }

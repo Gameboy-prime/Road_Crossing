@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    public Statistics stat;
-    public Money money;
+    public GameOver gameOver;
 
     private void OnCollisionEnter(Collision other)
     {
@@ -17,9 +16,7 @@ public class Destroyer : MonoBehaviour
         }
         else if(other.collider.CompareTag("Player"))
         {
-            stat.ShowStat();
-            money.SaveProgress(); 
-            money.LoadProgress(); 
+            gameOver.GameIsOver();
             
         }
         

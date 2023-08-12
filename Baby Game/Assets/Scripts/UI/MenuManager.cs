@@ -87,16 +87,5 @@ public class MenuManager : MonoBehaviour
         
     }
 
-    IEnumerator GameOver()
-    {
-        yield return  new WaitForSeconds(.3f);
-        gameoverBox.SetActive(true);
-        mainCanvasBox.SetActive(false);
-        Time.timeScale = 0f;
-    }
-
-    public void GameIsOver()
-    {
-        StartCoroutine(GameOver());
-    }
+    
 }

@@ -78,5 +78,5 @@ crashlytics-build.properties
 *.tiff
 *.meta
 *.mat
-*.png
 *.brush
+*.png

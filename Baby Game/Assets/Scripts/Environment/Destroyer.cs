@@ -5,22 +5,7 @@ using UnityEngine;
 
 public class Destroyer : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void On
-
-    
 
     private void OnCollisionEnter(Collision other)
     {
@@ -33,5 +18,16 @@ public class Destroyer : MonoBehaviour
         
     }
 
-    
+    private void OnCollisionStay(Collision collision)
+    {
+        if (!collision.collider.CompareTag("Enemy"))
+        {
+            GameObject obj = collision.collider.gameObject;
+            Destroy(obj);
+
+        }
+
+    }
+
+
 }

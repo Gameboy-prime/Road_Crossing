@@ -40,7 +40,13 @@ public class Movement : MonoBehaviour
 
     private void MyInput()
     {
-        horizontalInput= Input.GetAxis("Horizontal") *moveForce*Time.deltaTime;
+        bool check = EnvironmentBounds.IsMoveable;
+        if(check)
+        {
+            horizontalInput = Input.GetAxis("Horizontal") * moveForce * Time.deltaTime;
+
+        }
+        
         verticalInput= Input.GetAxis("Vertical") *moveForce*Time.deltaTime;
         jumpKeyWasPresssed = Input.GetKeyDown(KeyCode.Space);
         

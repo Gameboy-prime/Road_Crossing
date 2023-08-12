@@ -9,22 +9,30 @@ public class Destroyer : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if(!other.collider.CompareTag("Enemy"))
+        if(other.collider.CompareTag("car"))
         {
-            GameObject obj = other.collider.gameObject;
-            Destroy(obj);
-
+            Rigidbody point = other.rigidbody;
+            Destroy(point.gameObject);
+        }
+        else
+        {
+            return;
         }
         
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (!collision.collider.CompareTag("Enemy"))
+        if (collision.rigidbody.CompareTag("car"))
         {
-            GameObject obj = collision.collider.gameObject;
-            Destroy(obj);
+            Rigidbody point = collision.rigidbody;
+            Destroy(point.gameObject);
+            
 
+        }
+        else
+        {
+            return;
         }
 
     }

@@ -6,21 +6,31 @@ public class EnvironmentBounds : MonoBehaviour
 {
     [SerializeField]
     private float bounds=40f;
-    public static bool IsMoveable;
+    public static bool IsLeftMoveable;
+    public static bool IsRightMoveable;
     
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x< bounds && transform.position.x > -bounds)
+        if(transform.position.x< bounds)
         {
-            IsMoveable = true;
+            IsLeftMoveable = true;
         }
         else
         {
-            IsMoveable = false;
+            IsLeftMoveable = false;
         }
-        Debug.Log(IsMoveable);
+
+        if(transform.position.x > -bounds)
+        {
+            IsRightMoveable = true;
+        }
+        else
+        {
+            IsRightMoveable = false;
+        }
+        Debug.Log(IsLeftMoveable.ToString() +  IsRightMoveable.ToString());
         
     }
 

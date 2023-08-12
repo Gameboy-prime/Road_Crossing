@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    
+    
+    public CharacterController controller;
     public AudioSource run;
 
-    
-
-    public Rigidbody body;
+   
     private float horizontalInput;
     private float verticalInput;
     public float moveForce;
@@ -26,8 +27,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        body = GetComponent<Rigidbody>();
-
+        
     }
 
     // Update is called once per frame
@@ -40,14 +40,30 @@ public class Movement : MonoBehaviour
 
     private void MyInput()
     {
-        bool check = EnvironmentBounds.IsMoveable;
-        if(check)
-        {
-            horizontalInput = Input.GetAxis("Horizontal") * moveForce * Time.deltaTime;
 
+        bool checkLeft = EnvironmentBounds.IsLeftMoveable;
+        if (checkLeft && Input.GetKey(KeyCode.LeftArrow))
+        {
+            controller.Move(Vector3.left*5*moveForce*Time.deltaTime);
         }
-        
-        verticalInput= Input.GetAxis("Vertical") *moveForce*Time.deltaTime;
+        bool checkRIght= EnvironmentBounds.IsRightMoveable;
+        if (checkRIght && Input.GetKey(KeyCode.RightArrow))
+        {
+            controller.Move(Vector3.right * 5 * moveForce * Time.deltaTime);
+        }
+
+
+
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            controller.Move(Vector3.forward * 5 * moveForce * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            controller.Move(Vector3.back * 5 * moveForce * Time.deltaTime);
+        }
         jumpKeyWasPresssed = Input.GetKeyDown(KeyCode.Space);
         
         /* IF YOU WANT TO CHANGE THE ROTATION OF A BODY TO THAT OF THE CAMERA
@@ -62,7 +78,8 @@ public class Movement : MonoBehaviour
      void FixedUpdate()
     {
         
-        body.velocity= transform.right*horizontalInput +new Vector3(0, body.velocity.y,0) + transform.forward*verticalInput;
+        //body.velocity= transform.right*horizontalInput +new Vector3(0, body.velocity.y,0) + transform.forward*verticalInput;
+
         
         
         
@@ -76,7 +93,7 @@ public class Movement : MonoBehaviour
         }
         if(isGrounded  && jumpKeyWasPresssed)
         {
-            body.AddForce(new Vector3(0,2*jumpForce*Time.deltaTime ,0), ForceMode.Impulse);
+            //body.AddForce(new Vector3(0,2*jumpForce*Time.deltaTime ,0), ForceMode.Impulse);
         }
 
         

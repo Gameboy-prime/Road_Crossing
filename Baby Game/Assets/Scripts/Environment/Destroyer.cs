@@ -18,6 +18,8 @@ public class Destroyer : MonoBehaviour
         
     }
 
+    private void On
+
     
 
     private void OnCollisionEnter(Collision other)
